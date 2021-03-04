@@ -1,0 +1,92 @@
+export default [
+  {
+    _tag: "CSidebarNavTitle",
+    _children: ["IKEA Account Information"],
+    access: ["hr", "admin", "employee"],
+  },
+  {
+    _tag: "CSidebarNavItem",
+    name: "Dashboard",
+    to: "/dashboard",
+    icon: "cil-home",
+    access: ["hr", "admin", "employee"],
+    badge: {
+      color: "info",
+      text: "NEW",
+    },
+  },
+  {
+    _tag: "CSidebarNavTitle",
+    _children: ["IKEA Product Articles"],
+    access: ["hr", "admin"],
+  },
+  {
+    _tag: "CSidebarNavItem",
+    name: "View All Articles",
+    to: "/articles",
+    icon: "cil-lock-locked",
+    access: ["hr", "admin"],
+  },
+  {
+    _tag: "CSidebarNavItem",
+    name: "Create New Article",
+    to: "/articles/create",
+    icon: "cil-check-circle",
+    access: ["hr", "admin"],
+  },
+  {
+    _tag: "CSidebarNavTitle",
+    _children: ["IKEA Products"],
+    access: ["hr", "admin"],
+  },
+  {
+    _tag: "CSidebarNavItem",
+    name: "View All Products",
+    to: "/products",
+    icon: "cil-lock-locked",
+    access: ["hr", "admin"],
+  },
+  {
+    _tag: "CSidebarNavItem",
+    name: "Create New Product",
+    to: "/products/create",
+    icon: "cil-check-circle",
+    access: ["hr", "admin"],
+  },
+  {
+    _tag: "CSidebarNavTitle",
+    _children: ["IKEA Sales Records"],
+    access: ["hr", "admin"],
+  },
+  {
+    _tag: "CSidebarNavItem",
+    name: "View All Sales",
+    to: "/sales",
+    icon: "cil-lock-locked",
+    access: ["hr", "admin"],
+  },
+  {
+    _tag: "CSidebarNavItem",
+    name: "Register New Sale",
+    to: "/sales/create",
+    icon: "cil-check-circle",
+    access: ["hr", "admin"],
+  },
+  {
+    _tag: "CSidebarNavTitle",
+    _children: ["Administrative Settings"],
+    access: ["hr", "admin"],
+  },
+  {
+    _tag: "CSidebarNavItem",
+    name: "General Settings",
+    to: "/settings",
+    icon: "cil-settings",
+    access: ["hr", "admin"],
+  },
+  {
+    _tag: "CSidebarNavDivider",
+    className: "m-2",
+    access: ["hr", "admin", "employee"],
+  },
+];
