@@ -9,6 +9,9 @@ import {
   CLabel,
   CSelect,
   CSwitch,
+  CInputGroup,
+  CInputGroupPrepend,
+  CInputGroupText,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 import Joi from "@hapi/joi";
@@ -133,6 +136,8 @@ class Form extends Component {
       placeholder = "",
       disabled = false,
       wrapper = true,
+      groupText = null,
+      groupIcon = null,
     } = params;
     if (errors && errors[key]) errorMessage = errors[key];
 
@@ -155,7 +160,23 @@ class Form extends Component {
     // return input element without wrapper
     if (!wrapper) return inputElement;
 
-    // return input element with wrapper
+    // return input element with wrapper and icon-label
+    if (groupIcon || groupText) {
+      return (
+        <CInputGroup className="mb-3">
+          <CInputGroupPrepend>
+            <CInputGroupText>
+              {groupIcon ? <CIcon name={groupIcon} /> : groupText}
+            </CInputGroupText>
+          </CInputGroupPrepend>
+          {inputElement}
+          <CValidFeedback>Cool, input is valid!</CValidFeedback>
+          <CInvalidFeedback>{errorMessage}</CInvalidFeedback>
+        </CInputGroup>
+      );
+    }
+
+    // return input element with wrapper and text-label
     return (
       <CCol key={key} xs="12">
         <CFormGroup>
@@ -310,13 +331,14 @@ class Form extends Component {
   };
 
   // form submit button
-  renderSubmitButton = (label) => {
+  renderSubmitButton = ({ label, block = false, iconName = "cil-save" }) => {
     const { errors, loading } = { ...this.state };
     // const disabled = Object.keys(errors).length;
 
     return (
       <CButton
         // disabled={disabled ? true : false}
+        block={block}
         type="submit"
         className="mr-2"
         size="sm"
@@ -329,7 +351,7 @@ class Form extends Component {
         )}
         {!loading && (
           <>
-            <CIcon name="cil-save" /> {label}
+            <CIcon name={iconName} /> {label}
           </>
         )}
       </CButton>
@@ -337,7 +359,7 @@ class Form extends Component {
   };
 
   // form reset button
-  renderResetButton = (label) => {
+  renderResetButton = ({ label, iconName = "cil-ban" }) => {
     const errors = { ...this.state.errors };
     // const disabled = Object.keys(errors).length;
     return (
@@ -347,7 +369,7 @@ class Form extends Component {
         size="sm"
         color="danger"
       >
-        <CIcon name="cil-ban" /> {label}
+        <CIcon name={iconName} /> {label}
       </CButton>
     );
   };

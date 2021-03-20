@@ -49,13 +49,13 @@ instance.interceptors.response.use(
       error.response.status < 500;
 
     let errorMessage = error.message;
-    if (
-      error &&
-      error.response &&
-      error.response.data &&
-      error.response.data.message
-    ) {
-      errorMessage += "\n" + error.response.data.message;
+    if (error && error.response && error.response.data) {
+      if (typeof error.response.data === "string") {
+        errorMessage += "\nMessage: " + error.response.data;
+      }
+      if (error.response.data.message) {
+        errorMessage += "\n" + error.response.data.message;
+      }
     }
 
     if (!expectedException) {

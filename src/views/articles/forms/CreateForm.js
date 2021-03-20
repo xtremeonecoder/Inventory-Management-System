@@ -106,8 +106,8 @@ class CreateForm extends Form {
             </CRow>
           </CCardBody>
           <CCardFooter>
-            {this.renderSubmitButton("Save Article")}
-            {this.renderResetButton("Reset Values")}
+            {this.renderSubmitButton({ label: "Save Article" })}
+            {this.renderResetButton({ label: "Reset Values" })}
           </CCardFooter>
         </CCard>
       </CForm>

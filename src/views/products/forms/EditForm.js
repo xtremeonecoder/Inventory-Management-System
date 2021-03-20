@@ -246,8 +246,8 @@ class EditForm extends Form {
             </CRow>
           </CCardBody>
           <CCardFooter>
-            {this.renderSubmitButton("Save Changes")}
-            {this.renderResetButton("Reset Values")}
+            {this.renderSubmitButton({ label: "Save Changes" })}
+            {this.renderResetButton({ label: "Reset Values" })}
           </CCardFooter>
         </CCard>
       </CForm>
